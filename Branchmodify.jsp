@@ -1,7 +1,7 @@
 <%@ page import="java.sql.*, database.*" errorPage="" %>
 <html>
 <head>
-<title>Apna Life Insurance</title>
+<title>Life Insurance</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 

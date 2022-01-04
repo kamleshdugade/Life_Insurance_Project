@@ -1,7 +1,9 @@
 <%@ page  import="java.sql.*,database.*" errorPage="" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
 <html>
 <head>
-<title>Untitled Document</title>
+<title>Life Insurance</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 
@@ -52,7 +54,7 @@ System.out.println("in the custall html"+rs+ "   sop");
           <div align="center"></div></td>
 		  <% prdate=rs.getString(2);
 		     if(prdate==null)
-			  {   prdate="NIL ";
+			  {   prdate="NIL";
 			  }
 			  %>
         <td width="189"><%=prdate%> <div align="center"></div></td>

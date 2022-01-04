@@ -32,7 +32,7 @@ public class PolicyRegInsert extends HttpServlet
             int pbonusrate = Integer.parseInt(req.getParameter("pbonusrate").trim());
             Date d2 = Date.valueOf(req.getParameter("bdate").trim());
             con = DBConn.getConnection();
-            rs = DBConn.executeQuery("select max(policyid) from policies");
+            rs = DBConn.executeQuery("select * from policies;");
             if(rs.next())
             {
                 pid = rs.getInt(1);

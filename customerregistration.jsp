@@ -1,7 +1,7 @@
 <%@ page   %>
 <html>
 <head>
-<title>Untitled Document</title>
+<title>Life Insurance</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 

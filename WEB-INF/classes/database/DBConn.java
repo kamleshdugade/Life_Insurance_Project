@@ -4,31 +4,36 @@
 // Source File Name:   DBConn.java
 
 package database;
-
+import com.mysql.jdbc.Driver;
 import java.io.PrintStream;
 import java.sql.*;
 
 public class DBConn
 {
-
+    static Connection con = null;
+    static ResultSet rs = null;
+    static Statement st = null;
+    static PreparedStatement pstmt = null;
     public DBConn()
     {
     }
-
     public static Connection getConnection()
         throws Exception
     {
         try
         {
+
             System.out.println("in con");
-            Class.forName("com.mysql.jdbc.Driver");
-			 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
-            System.out.println("after con");
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            String connectionURL = "jdbc:mysql://localhost:3306/insurancedb";
+            con = DriverManager.getConnection(connectionURL,"root","root");
+            System.out.println("DataBase connection succesfully..!!");
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("in conexp");
+            System.out.println("in con_excepion");
         }
         System.out.println("get con");
         return con;
@@ -105,10 +110,4 @@ public class DBConn
         st.close();
         con.close();
     }
-
-    static Connection con = null;
-    static ResultSet rs = null;
-    static Statement st = null;
-    static PreparedStatement pstmt = null;
-
 }

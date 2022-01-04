@@ -1,7 +1,7 @@
 <%@ page  import="java.sql.*,database.*" errorPage="" %>
 <html>
 <head>
-<title>Apna Life Insurance</title>
+<title>Life Insurance</title>
 </head><body bgcolor="#A3A3D1">
 <form name="form1" method="post" action="./">
   <p> 
