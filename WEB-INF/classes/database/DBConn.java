@@ -22,7 +22,6 @@ public class DBConn
     {
         try
         {
-
             System.out.println("in con");
             //Class.forName("com.mysql.cj.jdbc.Driver");
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
