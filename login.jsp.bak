@@ -11,8 +11,8 @@ String usid;
 %> 
 
 <%
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","apna","apna");
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/insurancedb","root","root");
 int userid=Integer.parseInt(request.getParameter("userid").trim());
 usid=request.getParameter("userid").trim();
 

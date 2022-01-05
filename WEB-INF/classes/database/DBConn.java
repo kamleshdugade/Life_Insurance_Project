@@ -24,9 +24,12 @@ public class DBConn
         {
             System.out.println("in con");
             //Class.forName("com.mysql.cj.jdbc.Driver");
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            String connectionURL = "jdbc:mysql://localhost:3306/insurancedb";
-            con = DriverManager.getConnection(connectionURL,"root","root");
+            //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            //String connectionURL = "jdbc:mysql://localhost:3306/InsuranceDb";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
+            //con = DriverManager.getConnection(connectionURL,"root","root");
             System.out.println("DataBase connection succesfully..!!");
         }
         catch(Exception e)
@@ -43,6 +46,7 @@ public class DBConn
         try
         {
             st = con.createStatement();
+
             rs = st.executeQuery(s);
             System.out.println("in st");
         }

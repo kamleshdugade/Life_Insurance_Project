@@ -19,6 +19,7 @@ System.out.println("sys date is"+d2);
 //branchid=Integer.parseInt(request.getParameter("bid").trim());
 
 con=DBConn.getConnection();
+System.out.println("Inside policy details");
 rs=DBConn.executeQuery("select * from  policies order by policyid asc");
 
 %>

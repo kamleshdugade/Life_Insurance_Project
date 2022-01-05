@@ -18,19 +18,20 @@ public class DBConn
     public static Connection getConnection()
         throws Exception
     {
+        Connection con;
         try
         {
-            System.out.println("in con");
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-			 con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","apna","apna");
-            System.out.println("after con");
+            System.out.println("Inside BAK\n");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
+            System.out.println("Inside BAK Con Succesfully..\n");
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("in conexp");
+            System.out.println("inside bak conexp");
         }
-        System.out.println("get con");
+        System.out.println("get con inside bak");
         return con;
     }
 
