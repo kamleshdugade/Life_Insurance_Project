@@ -51,7 +51,8 @@ System.out.println("sys date is"+d2);
   <p>&nbsp;</p>
   <table width="214" border="3" align="center" cellpadding="2" cellspacing="2">
     <tr>
-      <td width="87"><input type="submit" name="Submit" value="  Submit  "></td>
+      <td width="87"><input type="submit" name="Submit" value="  Submit  ">
+      </td>
       <td width="103"><div align="center">
           <input type="reset" name="Submit2" value="  Reset  ">
         </div></td>

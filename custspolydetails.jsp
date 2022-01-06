@@ -10,6 +10,7 @@
 
 <%! Connection con;
 ResultSet rs;
+Statement st;
 %>
     <%
 java.util.Date d=new java.util.Date();
@@ -18,8 +19,12 @@ System.out.println("sys date is"+d2);
 
 //branchid=Integer.parseInt(request.getParameter("bid").trim());
 
-con=DBConn.getConnection();
-rs=DBConn.executeQuery("select * from  custpolicies order by custid asc");
+//con=DBConn.getConnection();
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
+      System.out.println("Inside policies details");
+      st = con.createStatement();
+rs=st.executeQuery("select * from  custpolicies order by custid asc");
 
 %>
 

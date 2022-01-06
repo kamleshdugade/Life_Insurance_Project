@@ -10,14 +10,19 @@
   <p align="left"> 
     <%! Connection con;
 ResultSet rs;
+Statement st;
 %>
     <%
 java.util.Date d=new java.util.Date();
 java.sql.Date d2=new java.sql.Date(d.getYear(),d.getMonth(),d.getDate());
 System.out.println("sys date is"+d2);
 
-con=DBConn.getConnection();
-rs=DBConn.executeQuery("select * from  branchmgr order by branchmgrid asc");
+//con=DBConn.getConnection();
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
+      System.out.println("Inside policies details");
+      st = con.createStatement();
+      rs=st.executeQuery("select * from  branchmgr order by branchmgrid asc");
 %>
 
 

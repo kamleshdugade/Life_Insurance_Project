@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 
 public class PolicyRegInsert extends HttpServlet
 {
+    static Statement st;
 
     public PolicyRegInsert()
     {
@@ -19,10 +20,12 @@ public class PolicyRegInsert extends HttpServlet
     public void service(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException
     {
+
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
         try
         {
+
             String pname = req.getParameter("pname").trim();
             int pterm = Integer.parseInt(req.getParameter("pterm").trim());
             int pamt = Integer.parseInt(req.getParameter("pamt").trim());
@@ -31,14 +34,15 @@ public class PolicyRegInsert extends HttpServlet
             int pbonusperiod = Integer.parseInt(req.getParameter("pbonusperiod").trim());
             int pbonusrate = Integer.parseInt(req.getParameter("pbonusrate").trim());
             Date d2 = Date.valueOf(req.getParameter("bdate").trim());
-            con = DBConn.getConnection();
-            rs = DBConn.executeQuery("select * from policies;");
+            //con = DBConn.getConnection();
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
+            rs = st.executeQuery("select * from policies;");
             if(rs.next())
             {
                 pid = rs.getInt(1);
                 if(pid == 0)
                     pid = 9999;
-                System.out.println((new StringBuilder("if 1loop")).append(pid).toString());
+                System.out.println((new StringBuilder("if 1st loop")).append(pid).toString());
                 pid++;
                 System.out.println((new StringBuilder("if loop")).append(pid).toString());
             } else
@@ -46,7 +50,7 @@ public class PolicyRegInsert extends HttpServlet
                 pid = 10000;
                 System.out.println((new StringBuilder("else loop")).append(pid).toString());
             }
-            pstmt = DBConn.prepareStatement("insert into policies values(?,?,?,?,?,?,?,?,?)");
+            pstmt = con.prepareStatement("insert into policies values(?,?,?,?,?,?,?,?,?)");
             pstmt.setInt(1, pid);
             pstmt.setString(2, pname);
             pstmt.setInt(3, pterm);
@@ -60,7 +64,7 @@ public class PolicyRegInsert extends HttpServlet
             pstmt.close();
             out.println((new StringBuilder("<body bgcolor='#A3A3D1'><center><h1><B><I>Successfully Policy Registered : PolicyID is </I>")).append(pid).toString());
             out.print("</B></h1></center></body>");
-            DBConn.close();
+            con.close();
         }
         catch(Exception e)
         {
@@ -68,7 +72,6 @@ public class PolicyRegInsert extends HttpServlet
             System.out.println("in policyreg");
         }
     }
-
     Connection con;
     ResultSet rs;
     PreparedStatement pstmt;

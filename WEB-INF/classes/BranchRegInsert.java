@@ -28,8 +28,12 @@ public class BranchRegInsert extends HttpServlet
             int phone = Integer.parseInt(request.getParameter("phone").trim());
             String state = request.getParameter("state").trim();
             Date d2 = Date.valueOf(request.getParameter("bdate").trim());
-            con = DBConn.getConnection();
-            rs = DBConn.executeQuery("select max(branchid) from branch");
+            //con = DBConn.getConnection();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
+            st = con.createStatement();
+            rs = st.executeQuery("select max(branchid) from branch");
             if(rs.next())
             {
                 id = rs.getInt(1);
@@ -43,7 +47,7 @@ public class BranchRegInsert extends HttpServlet
                 id = 500;
                 System.out.println((new StringBuilder("else loop")).append(id).toString());
             }
-            pstmt = DBConn.prepareStatement("insert into branch values(?,?,?,?,?,?)");
+            pstmt = con.prepareStatement("insert into branch values(?,?,?,?,?,?)");
             pstmt.setInt(1, id);
             pstmt.setString(2, bname);
             pstmt.setString(3, location);
@@ -53,7 +57,7 @@ public class BranchRegInsert extends HttpServlet
             pstmt.execute();
             out.println((new StringBuilder("<html> <body bgcolor='#A3A3D1'><center><h1><B><I>Successfully Branch Registered : Branch ID is </I>")).append(id).toString());
             out.print("</B></h1></center></body></html>");
-            DBConn.close();
+            con.close();
         }
         catch(Exception e)
         {
@@ -65,4 +69,5 @@ public class BranchRegInsert extends HttpServlet
     Connection con;
     ResultSet rs;
     PreparedStatement pstmt;
+    Statement st;
 }

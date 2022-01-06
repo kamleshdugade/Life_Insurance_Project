@@ -10,6 +10,7 @@
   <p align="left"> 
     <%! Connection con;
 ResultSet rs;
+Statement st;
 %>
     <%
 java.util.Date d=new java.util.Date();
@@ -18,8 +19,12 @@ System.out.println("sys date is"+d2);
 
 String obj=(String)session.getAttribute("MGRID");
 int mid=Integer.parseInt(obj);
-con=DBConn.getConnection();
-rs=DBConn.executeQuery("select * from  branchmgr where branchmgrid="+mid);
+//con=DBConn.getConnection();
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
+      System.out.println("Inside policies details");
+      st = con.createStatement();
+      rs=st.executeQuery("select * from  branchmgr where branchmgrid="+mid);
 
 
 %>

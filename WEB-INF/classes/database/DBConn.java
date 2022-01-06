@@ -29,7 +29,7 @@ public class DBConn
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/InsuranceDb","root","root");
-            //con = DriverManager.getConnection(connectionURL,"root","root");
+            //con=DriverManager.getConnection(connectionURL,"root","root");
             System.out.println("DataBase connection succesfully..!!");
         }
         catch(Exception e)
