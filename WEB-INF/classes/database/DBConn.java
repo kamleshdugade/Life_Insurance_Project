@@ -10,10 +10,10 @@ import java.sql.*;
 
 public class DBConn
 {
-    static Connection con = null;
-    static ResultSet rs = null;
-    static Statement st = null;
-    static PreparedStatement pstmt = null;
+    static Connection con;
+    static ResultSet rs;
+    static Statement st;
+    static PreparedStatement pstmt;
     public DBConn()
     {
     }
